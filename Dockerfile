@@ -34,6 +34,10 @@ ENV NODE_ENV=production
 ENV HOME=/data
 ENV OPENCLAW_STATE_DIR=/data
 
+# Create /data directory with correct permissions for node user
+# This is the mount point for Cloud Storage volume
+RUN mkdir -p /data && chown node:node /data
+
 # Security hardening: Run as non-root user
 # The node:22-bookworm image includes a 'node' user (uid 1000)
 # This reduces the attack surface by preventing container escape via root privileges
