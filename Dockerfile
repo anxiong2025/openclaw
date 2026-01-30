@@ -32,11 +32,10 @@ RUN pnpm ui:build
 
 ENV NODE_ENV=production
 ENV HOME=/data
-ENV OPENCLAW_STATE_DIR=/data
+ENV OPENCLAW_STATE_DIR=/mnt/gcs
 
-# Create /data directory with correct permissions for node user
-# This is the mount point for Cloud Storage volume
-RUN mkdir -p /data/.openclaw && chown -R node:node /data
+# Create directories with correct permissions
+RUN mkdir -p /data/.openclaw /mnt/gcs && chown -R node:node /data /mnt/gcs
 
 # Create default config with gateway.mode=local
 RUN echo '{"gateway":{"mode":"local"}}' > /data/.openclaw/openclaw.json && chown node:node /data/.openclaw/openclaw.json
