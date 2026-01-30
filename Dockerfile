@@ -36,7 +36,10 @@ ENV OPENCLAW_STATE_DIR=/data
 
 # Create /data directory with correct permissions for node user
 # This is the mount point for Cloud Storage volume
-RUN mkdir -p /data && chown node:node /data
+RUN mkdir -p /data/.openclaw && chown -R node:node /data
+
+# Create default config with gateway.mode=local
+RUN echo '{"gateway":{"mode":"local"}}' > /data/.openclaw/openclaw.json && chown node:node /data/.openclaw/openclaw.json
 
 # Security hardening: Run as non-root user
 # The node:22-bookworm image includes a 'node' user (uid 1000)
