@@ -31,7 +31,7 @@ RUN pnpm ui:install
 RUN pnpm ui:build
 
 ENV NODE_ENV=production
-ENV HOME=/home/node
+ENV HOME=/data
 ENV OPENCLAW_STATE_DIR=/data
 
 # Security hardening: Run as non-root user
