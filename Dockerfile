@@ -32,10 +32,9 @@ RUN pnpm ui:build
 
 ENV NODE_ENV=production
 ENV HOME=/data
-ENV OPENCLAW_STATE_DIR=/mnt/gcs
 
 # Create directories with correct permissions
-RUN mkdir -p /data/.openclaw /mnt/gcs && chown -R node:node /data /mnt/gcs
+RUN mkdir -p /data/.openclaw && chown -R node:node /data
 
 # Create default config with gateway.mode=local
 RUN echo '{"gateway":{"mode":"local"}}' > /data/.openclaw/openclaw.json && chown node:node /data/.openclaw/openclaw.json
