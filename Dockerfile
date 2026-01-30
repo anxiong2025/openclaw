@@ -43,4 +43,4 @@ RUN mkdir -p /data && chown node:node /data
 # This reduces the attack surface by preventing container escape via root privileges
 USER node
 
-CMD ["node", "dist/index.js", "gateway", "--port", "3000", "--bind", "lan", "--allow-unconfigured", "--mode", "local"]
+CMD ["node", "dist/index.js", "gateway", "--port", "3000", "--bind", "lan", "--allow-unconfigured"]
