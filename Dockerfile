@@ -32,6 +32,7 @@ RUN pnpm ui:build
 
 ENV NODE_ENV=production
 ENV HOME=/data
+ENV OPENCLAW_CONFIG_PATH=/data/.openclaw/openclaw.json
 
 # Create directories with correct permissions
 RUN mkdir -p /data/.openclaw && chown -R node:node /data
